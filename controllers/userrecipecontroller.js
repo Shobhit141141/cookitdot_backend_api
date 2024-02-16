@@ -4,7 +4,7 @@ const { default: mongoose } = require('mongoose')
 // GET ALL
 const getrecipe = async (req, res) => {
     const user_id = req.user._id
-    const recipes = await recipemodel.find({user_id}).lean()
+    const recipes = await recipemodel.find({ user_id }).lean()
     res.status(200).json(recipes)
 
 }
@@ -26,10 +26,10 @@ const getonrecipe = async (req, res) => {
 }
 // POST
 const createrecipe = async (req, res) => {
-    const { title, cuisine, image, time, recipe , ingredients } = req.body
+    const { title, cuisine, image, time, recipe, ingredients } = req.body
 
     try {
-        const recipee = await recipemodel.create({ title, cuisine, image, time, recipe , ingredients})
+        const recipee = await recipemodel.create({ title, cuisine, image, time, recipe, ingredients })
         res.status(200).json(recipee)
     } catch (error) {
         res.status(400).json({ error: error.message })
